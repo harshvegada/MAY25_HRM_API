@@ -11,9 +11,6 @@ on:
       test_cases:
         description: 'Test cases to run (e.g., LoginTests#testLogin+testLogout,SignupTests#testSignup)'
         required: true
-  pull_request:
-    branches:
-      - master
 
 jobs:
   build:
@@ -39,10 +36,7 @@ jobs:
         run: |
           echo "Running the following test cases:"
           echo "${{ github.event.inputs.test_cases }}"
-          
           mvn -Dtest="${{ github.event.inputs.test_cases }}" test
-
-
 
       - name: Checkout GitHub Pages branch
         uses: actions/checkout@v4
