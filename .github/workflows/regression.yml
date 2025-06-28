@@ -60,6 +60,15 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         if: always()
         with:
-          PERSONAL_TOKEN: ${{ secrets.GH_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: allure-history
+          personal_token: ${{ secrets.GH_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history
+          commit_message: "Deploy Allure report for run ${{ github.run_id }} on branch ${{ github.event.inputs.target_branch }}"
+
+      - name: Check for Code Changes
+        id: check_changes
+        run: |
+          git diff --name-only ${{ github.event.inputs.target_branch }} | grep -q '^src/test' && echo "run_tests=true" >> $GITHUB_OUTPUT || echo "run_tests=false" >> $GITHUB_OUTPUT
+      - name: Run Tests
+        if: steps.check_changes.outputs.run_tests == 'true'
+        run: mvn -Dtest="${{ github.event.inputs.test_cases }}" test
