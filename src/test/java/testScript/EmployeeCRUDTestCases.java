@@ -15,7 +15,7 @@ import utility.GenerateData;
 
 import java.util.Arrays;
 
-public class EmployeeCRUDOperation extends BaseTest {
+public class EmployeeCRUDTestCases extends BaseTest {
 
     @Test
     public void createEmployeeTest() throws JsonProcessingException {
