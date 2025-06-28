@@ -7,7 +7,7 @@ on:
       target_branch:
         description: 'Branch to run tests on'
         required: true
-        default: 'main'
+        default: 'master'
       test_cases:
         description: 'Test cases to run (e.g., LoginTests#testLogin+testLogout,SignupTests#testSignup)'
         required: true
