@@ -1,12 +1,12 @@
 name: Regression Suite
 
 on:
-  push:
-    branches:
-      - master
   pull_request:
     branches:
       - master
+  push:
+    branches:
+      - your-target-branch  # Replace with the actual branch you want
 
 jobs:
   build:
@@ -18,15 +18,38 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Java
+      - name: Set up Java 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
           cache: 'maven'
 
-      - name: Run tests with Maven
-        run: mvn clean test
+      - name: Detect changed test files
+        id: changed-tests
+        run: |
+          echo "Fetching changes from base branch..."
+          git fetch origin main  # Replace 'main' if your base branch differs
+          CHANGED_FILES=$(git diff --name-only origin/main...HEAD | grep -E 'src/test/java/.*Test\.java$' || true)
+          echo "Changed test files:"
+          echo "$CHANGED_FILES"
+          echo "changed_tests=$CHANGED_FILES" >> $GITHUB_OUTPUT
+
+      - name: Run only changed test classes
+        if: steps.changed-tests.outputs.changed_tests != ''
+        run: |
+          FILES="${{ steps.changed-tests.outputs.changed_tests }}"
+          echo "$FILES" | while read file; do
+            if [[ -f "$file" ]]; then
+              class=$(echo "$file" | sed -e 's|src/test/java/||' -e 's|/|.|g' -e 's|.java$||')
+              echo "Running test class: $class"
+              mvn -Dtest="$class" test
+            fi
+          done
+
+      - name: No new tests found
+        if: steps.changed-tests.outputs.changed_tests == ''
+        run: echo "No new or modified test classes detected."
 
       - name: Checkout GitHub Pages branch
         uses: actions/checkout@v4
@@ -44,6 +67,7 @@ jobs:
           allure_report: allure-report
           gh_pages: gh-pages
           allure_history: allure-history
+          retention_period: 5
 
       - name: Deploy Allure report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -52,5 +76,3 @@ jobs:
           PERSONAL_TOKEN: ${{ secrets.GH_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-history
-
-

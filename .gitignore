@@ -39,3 +39,4 @@ build/
 
 allure-results/
 .idea/
+allure-report/
