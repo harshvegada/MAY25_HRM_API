@@ -1,0 +1,5 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","1453","verifyWidgets","All Test Suite","Sat Jun 28 06:37:59 GMT 2025","passed","Sat Jun 28 06:38:01 GMT 2025","testScript.VerifyWidgetsCases","VerifyWidgetsCases","testScript.VerifyWidgetsCases","verifyWidgets"
+"","2507","createEmployeeTest","All Test Suite","Sat Jun 28 06:38:17 GMT 2025","passed","Sat Jun 28 06:38:19 GMT 2025","testScript.EmployeeCRUDOperation","EmployeeCRUDOperation","testScript.EmployeeCRUDOperation","createEmployeeTest"
+"","3004","createSkillAndVerifyInSame","All Test Suite","Sat Jun 28 06:38:10 GMT 2025","passed","Sat Jun 28 06:38:13 GMT 2025","testScript.VerifyWidgetsCases","VerifyWidgetsCases","testScript.VerifyWidgetsCases","createSkillAndVerifyInSame"
+"","1240","verifySkillASCOrder","All Test Suite","Sat Jun 28 06:38:05 GMT 2025","passed","Sat Jun 28 06:38:06 GMT 2025","testScript.VerifyWidgetsCases","VerifyWidgetsCases","testScript.VerifyWidgetsCases","verifySkillASCOrder"
