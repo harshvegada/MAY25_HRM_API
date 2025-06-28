@@ -1,12 +1,13 @@
 name: Regression Suite
 
 on:
+  workflow_dispatch:
   pull_request:
     branches:
       - master
   push:
     branches:
-      - your-target-branch  # Replace with the actual branch you want
+      - Harsh_WIP_1
 
 jobs:
   build:
