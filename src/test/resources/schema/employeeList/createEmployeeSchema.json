@@ -1,0 +1,193 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
+  "type": "object",
+  "properties": {
+    "messages": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "success"
+      ]
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "empNumber": {
+          "type": "string"
+        },
+        "employeeId": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "middleName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "locationId": {
+          "type": "string"
+        },
+        "nickName": {
+          "type": "string"
+        },
+        "smoker": {
+          "type": "string"
+        },
+        "emp_gender": {},
+        "ssn": {
+          "type": "string"
+        },
+        "sin": {
+          "type": "string"
+        },
+        "otherId": {
+          "type": "string"
+        },
+        "licenseNo": {
+          "type": "string"
+        },
+        "emp_dri_lice_exp_date": {},
+        "militaryService": {
+          "type": "string"
+        },
+        "street1": {
+          "type": "string"
+        },
+        "street2": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "emp_zipcode": {},
+        "province": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "emp_hm_telephone": {},
+        "emp_mobile": {},
+        "emp_work_telephone": {},
+        "emp_work_email": {},
+        "emp_oth_email": {},
+        "ethnic_race_code": {},
+        "emp_birthday": {},
+        "nation_code": {
+          "type": "string"
+        },
+        "emp_marital_status": {},
+        "emp_status": {},
+        "job_title_code": {},
+        "eeo_cat_code": {},
+        "joined_date": {
+          "type": "string"
+        },
+        "work_station": {},
+        "sal_grd_code": {},
+        "added_date": {
+          "type": "string"
+        },
+        "termination_id": {},
+        "custom1": {},
+        "custom2": {},
+        "custom3": {},
+        "custom4": {},
+        "custom5": {},
+        "custom6": {},
+        "custom7": {},
+        "custom8": {},
+        "custom9": {},
+        "custom10": {},
+        "eeo_job_category": {},
+        "eeo_paygrade": {},
+        "eeo_race_ent": {},
+        "flsa_exempt": {},
+        "work_schedule_id": {
+          "type": "string"
+        },
+        "purged_at": {},
+        "deleted_at": {}
+      },
+      "required": [
+        "empNumber",
+        "employeeId",
+        "firstName",
+        "middleName",
+        "lastName",
+        "locationId",
+        "nickName",
+        "smoker",
+        "emp_gender",
+        "ssn",
+        "sin",
+        "otherId",
+        "licenseNo",
+        "emp_dri_lice_exp_date",
+        "militaryService",
+        "street1",
+        "street2",
+        "city",
+        "emp_zipcode",
+        "province",
+        "country",
+        "emp_hm_telephone",
+        "emp_mobile",
+        "emp_work_telephone",
+        "emp_work_email",
+        "emp_oth_email",
+        "ethnic_race_code",
+        "emp_birthday",
+        "nation_code",
+        "emp_marital_status",
+        "emp_status",
+        "job_title_code",
+        "eeo_cat_code",
+        "joined_date",
+        "work_station",
+        "sal_grd_code",
+        "added_date",
+        "termination_id",
+        "custom1",
+        "custom2",
+        "custom3",
+        "custom4",
+        "custom5",
+        "custom6",
+        "custom7",
+        "custom8",
+        "custom9",
+        "custom10",
+        "eeo_job_category",
+        "eeo_paygrade",
+        "eeo_race_ent",
+        "flsa_exempt",
+        "work_schedule_id",
+        "purged_at",
+        "deleted_at"
+      ]
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "preboardingEmployeeId": {}
+      },
+      "required": [
+        "preboardingEmployeeId"
+      ]
+    }
+  },
+  "required": [
+    "messages",
+    "data",
+    "meta"
+  ]
+}
