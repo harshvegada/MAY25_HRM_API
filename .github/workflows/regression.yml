@@ -30,21 +30,34 @@ jobs:
         id: changed-tests
         run: |
           echo "Fetching changes from base branch..."
-          git fetch origin main  # Replace 'main' if your base branch differs
-          CHANGED_FILES=$(git diff --name-only origin/main...HEAD | grep -E 'src/test/java/.*Test\.java$' || true)
+          git fetch origin master  # Replace 'master' if your base branch differs
+          CHANGED_FILES=$(git diff --name-only origin/master...HEAD | grep -E 'src/test/java/.*Test\.java$' || true)
           echo "Changed test files:"
           echo "$CHANGED_FILES"
           echo "changed_tests=$CHANGED_FILES" >> $GITHUB_OUTPUT
+
 
       - name: Run only changed test classes
         if: steps.changed-tests.outputs.changed_tests != ''
         run: |
           FILES="${{ steps.changed-tests.outputs.changed_tests }}"
-          echo "$FILES" | while read file; do
+          echo "Detected changed test files:"
+          echo "$FILES"
+
+          # Ensure the FILES variable is not empty or misformatted
+          if [[ -z "$FILES" ]]; then
+            echo "No test files to run."
+            exit 0
+          fi
+
+          IFS=$'\n'
+          for file in $FILES; do
             if [[ -f "$file" ]]; then
               class=$(echo "$file" | sed -e 's|src/test/java/||' -e 's|/|.|g' -e 's|.java$||')
               echo "Running test class: $class"
               mvn -Dtest="$class" test
+            else
+              echo "File not found or deleted: $file"
             fi
           done
 
