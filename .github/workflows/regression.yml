@@ -21,7 +21,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.inputs.target_branch || github.ref_name || 'master' }}
+          ref: ${{ github.event.inputs.target_branch }}
 
       - name: Set up Java 17
         uses: actions/setup-java@v4
@@ -30,62 +30,15 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      - name: Detect changed test files
-        id: changed-tests
+
+      - name: Run selected test cases
         run: |
-          echo "Fetching latest master branch..."
-          git fetch origin master
+          echo "Running the following test cases:"
+          echo "${{ github.event.inputs.test_cases }}"
           
-          BASE=$(git merge-base HEAD origin/master)
-          echo "Merge base commit: $BASE"
-          
-          CHANGED_FILES=$(git diff --name-only $BASE HEAD | grep -E 'src/test/java/.*Test\.java$' || true)
-          
-          echo "Changed test files:"
-          echo "$CHANGED_FILES"
-          
-          echo "changed_tests=$CHANGED_FILES" >> $GITHUB_OUTPUT
+          mvn -Dtest="${{ github.event.inputs.test_cases }}" test
 
 
-      - name: Run only changed test classes
-        if: steps.changed-tests.outputs.changed_tests != ''
-        run: |
-          FILES="${{ steps.changed-tests.outputs.changed_tests }}"
-          echo "Detected changed test files:"
-          echo "$FILES"
-
-          if [[ -z "$FILES" ]]; then
-            echo "No test files to run."
-            exit 0
-          fi
-
-          TEST_CLASSES=()
-
-          IFS=$'\n'
-          for file in $FILES; do
-            file=$(echo "$file" | xargs)
-            if [[ -f "$file" ]]; then
-              class=$(echo "$file" | sed -e 's|src/test/java/||' -e 's|/|.|g' -e 's|.java$||')
-              echo "Adding test class: $class"
-              TEST_CLASSES+=("$class")
-            else
-              echo "File not found or deleted: $file"
-            fi
-          done
-
-          if [ ${#TEST_CLASSES[@]} -eq 0 ]; then
-            echo "No test classes found to run after filtering."
-            exit 0
-          fi
-
-          TEST_ARG=$(IFS=, ; echo "${TEST_CLASSES[*]}")
-
-          echo "Running tests for classes: $TEST_ARG"
-          mvn -Dtest="$TEST_ARG" test
-
-      - name: No new tests found
-        if: steps.changed-tests.outputs.changed_tests == ''
-        run: echo "No new or modified test classes detected."
 
       - name: Checkout GitHub Pages branch
         uses: actions/checkout@v4

@@ -7,7 +7,6 @@ import entity.skillCreate.CreateSkillPayload;
 import entity.skillDelete.DeletePayload;
 import io.qameta.allure.Allure;
 import io.restassured.response.Response;
-import org.jsoup.helper.DataUtil;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.DashboardPage;
@@ -20,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class VerifyWidgetsTestCases extends BaseTest {
+public class VerifyWidgetsCases extends BaseTest {
 
     @Test
     public void verifyWidgets() {
