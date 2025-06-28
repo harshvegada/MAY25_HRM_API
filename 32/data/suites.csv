@@ -1,0 +1,2 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","1431","verifyWidgets","Surefire suite","Sat Jun 28 15:07:04 GMT 2025","passed","Sat Jun 28 15:07:06 GMT 2025","testScript.VerifyWidgetsCases","Surefire test","testScript.VerifyWidgetsCases","verifyWidgets"
