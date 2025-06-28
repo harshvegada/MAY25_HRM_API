@@ -1,43 +1,60 @@
 name: Regression Suite
-'on':
+
+on:
   push:
     branches:
       - master
   pull_request:
     branches:
       - master
+
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
           cache: 'maven'
-      - run: mvn clean test
 
-      - name: Checkout gh-pages
-        uses: actions/checkout@v3
+      - name: Run tests with Maven
+        run: mvn clean test
+
+      - name: Download Allure results artifact
+        uses: actions/download-artifact@v3
+        if: always()
+        with:
+          name: allure-results
+          path: allure-results
+
+      - name: Checkout GitHub Pages branch
+        uses: actions/checkout@v4
         if: always()
         continue-on-error: true
         with:
           ref: gh-pages
+          path: gh-pages
 
-      - name: Allure Report Action
-        uses: mgrybyk-org/allure-report-branch-action@v1
-        if: always()
-        continue-on-error: true
-        id: allure
-        with:
-          report_id: 'self-test'
-          report_dir: 'allure-results'
-
-      - name: Git Commit and Push Action
-        uses: mgrybyk-org/git-commit-pull-push-action@v1
+      - name: Generate Allure Report
+        uses: simple-elf/allure-report-action@master
         if: always()
         with:
-          branch: gh-pages
+          allure_results: allure-results
+          allure_report: allure-report
+          gh_pages: gh-pages
+          allure_history: allure-history
+
+      - name: Deploy Allure report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: always()
+        with:
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: allure-history
