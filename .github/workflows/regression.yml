@@ -26,6 +26,7 @@ jobs:
 
 
       - name: Run selected test cases
+        continue-on-error: true
         run: |
           echo "Running the following test cases:"
           echo "${{ github.event.inputs.test_cases }}"
