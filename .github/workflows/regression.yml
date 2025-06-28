@@ -9,6 +9,8 @@ name: Regression Suite
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -17,3 +19,29 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
       - run: mvn clean test
+
+      - name: Checkout gh-pages
+        uses: actions/checkout@v3
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages # branch name
+          path: gh-pages-dir # checkout path
+
+      - name: Allure Report Action
+        uses: mgrybyk-org/allure-report-branch-action@v1
+        if: always()
+        continue-on-error: true
+        id: allure # used in comment to PR
+        with:
+          report_id: 'self-test'
+          gh_pages: 'gh-pages-dir'
+          report_dir: 'allure-results'
+
+      - name: Git Commit and Push Action
+        uses: mgrybyk-org/git-commit-pull-push-action@v1
+        if: always()
+        with:
+          repository: gh-pages-dir
+          branch: gh-pages
+          pull_args: --rebase -X ours
