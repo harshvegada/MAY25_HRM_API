@@ -58,3 +58,18 @@ jobs:
           publish_branch: gh-pages
           publish_dir: allure-history
 
+      - name: Send Email
+        uses: hilarion5/send-mail@v1
+        with:
+          smtp-server: smtp.gmail.com
+          smtp-port: 465
+          smtp-secure: true
+          from-email: harshhpatel07@gmail.com
+          to-email: harshvegada1997@gmail.com,write2technocredits@gmail.com
+          username: harshhpatel07@gmail.com
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: Test Email
+          content_type: text/html
+          body: |
+            <p>The Allure report for the latest run in <strong>${{ github.repository }}</strong> is available at:</p>
+            <p><a href="https://harshvegada.github.io/MAY25_HRM_API/${{ github.run_number }}">View Report</a></p>
