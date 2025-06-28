@@ -1,13 +1,8 @@
 name: Regression Suite
 
-
 on:
   workflow_dispatch:
     inputs:
-      target_branch:
-        description: 'Branch to run tests on'
-        required: true
-        default: 'master'
       test_cases:
         description: 'Test cases to run (e.g., LoginTests#testLogin+testLogout,SignupTests#testSignup)'
         required: true
@@ -21,8 +16,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.inputs.target_branch }}
 
       - name: Set up Java 17
         uses: actions/setup-java@v4
@@ -63,12 +56,4 @@ jobs:
           personal_token: ${{ secrets.GH_TOKEN }}
           publish_branch: gh-pages
           publish_dir: allure-history
-          commit_message: "Deploy Allure report for run ${{ github.run_id }} on branch ${{ github.event.inputs.target_branch }}"
 
-      - name: Check for Code Changes
-        id: check_changes
-        run: |
-          git diff --name-only ${{ github.event.inputs.target_branch }} | grep -q '^src/test' && echo "run_tests=true" >> $GITHUB_OUTPUT || echo "run_tests=false" >> $GITHUB_OUTPUT
-      - name: Run Tests
-        if: steps.check_changes.outputs.run_tests == 'true'
-        run: mvn -Dtest="${{ github.event.inputs.test_cases }}" test
