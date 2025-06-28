@@ -28,13 +28,6 @@ jobs:
       - name: Run tests with Maven
         run: mvn clean test
 
-      - name: Download Allure results artifact
-        uses: actions/download-artifact@v4
-        if: always()
-        with:
-          name: allure-results
-          path: allure-results
-
       - name: Checkout GitHub Pages branch
         uses: actions/checkout@v4
         if: always()
