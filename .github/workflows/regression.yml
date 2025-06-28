@@ -29,7 +29,7 @@ jobs:
         run: mvn clean test
 
       - name: Download Allure results artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         if: always()
         with:
           name: allure-results
@@ -56,5 +56,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         if: always()
         with:
+          PERSONAL_TOKEN: ${{ secrets.GH_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-history
