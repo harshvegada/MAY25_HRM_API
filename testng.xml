@@ -16,7 +16,7 @@
     <test verbose="2" preserve-order="true"
           name="EmployeeCRUDOperation">
         <classes>
-            <class name="testScript.EmployeeCRUDOperation">
+            <class name="testScript.EmployeeCRUDTestCases">
                 <methods>
                     <include name="createEmployeeTest"/>
                 </methods>

@@ -7,7 +7,6 @@ import entity.skillCreate.CreateSkillPayload;
 import entity.skillDelete.DeletePayload;
 import io.qameta.allure.Allure;
 import io.restassured.response.Response;
-import org.jsoup.helper.DataUtil;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.DashboardPage;
