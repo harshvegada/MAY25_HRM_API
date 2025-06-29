@@ -2,6 +2,10 @@ name: Sprint Development Suite
 
 on:
   workflow_dispatch:
+    inputs:
+      test_cases:
+        description: 'Test cases to run (e.g., LoginTests#testLogin+testLogout,SignupTests#testSignup)'
+        required: true
 
 jobs:
   build:
@@ -26,7 +30,7 @@ jobs:
         run: |
           echo "Running the following test cases:"
           echo "${{ github.event.inputs.test_cases }}"
-          mvn clean test -DxmlFile=regression
+          mvn -Dtest="${{ github.event.inputs.test_cases }}" test
 
       - name: Checkout GitHub Pages branch
         uses: actions/checkout@v4

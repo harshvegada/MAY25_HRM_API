@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="EmployeeCRUDCases">
+        <classes>
+            <class name="testScript.EmployeeCRUDCases">
+                <methods>
+                    <include name="createEmployeeTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true"
+          name="VendorTestCases">
+        <classes>
+            <class name="testScript.VendorTestCases">
+                <methods>
+                    <include name="createVendor"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true"
+          name="VerifyWidgetsCases">
+        <classes>
+            <class name="testScript.VerifyWidgetsCases">
+                <methods>
+                    <include name="verifyWidgets"/>
+                    <include name="verifySkillASCOrder"/>
+                    <include name="createSkillAndVerifyInSame"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

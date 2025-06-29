@@ -26,4 +26,13 @@ public class FileConstants {
 
     public static final String CREATE_EMPLOYEE_SCHEMA = EMPLOYEE_LIST_SCHEMA_FILE_PATH + File.separator + "createEmployeeSchema.json";
 
+    //    Vendor List Page
+    public static final String VENDOR_LIST_SCHEMA_FILE_PATH = System.getProperty("user.dir") +
+            File.separator + "src" + File.separator + "test" + File.separator + "resources" + File.separator + "schema" + File.separator + "vendor";
+
+    public static final String CREATE_VENDOR_SCHEMA = VENDOR_LIST_SCHEMA_FILE_PATH + File.separator + "createVendorSchema.json";
+
+
+
+
 }

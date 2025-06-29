@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"><suite name="All Test Suite"><test verbose="2" preserve-order="true" name="D:/Batches/API/MAY25/MAY25_HRM_API/src/test/java/testScript/EmployeeCRUDCases.java"><classes><class name="testScript.EmployeeCRUDCases"><methods><include name="createEmployeeTest"/></methods></class></classes></test></suite>
