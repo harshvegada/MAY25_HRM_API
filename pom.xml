@@ -85,7 +85,7 @@
                 <version>3.5.3</version>
                 <configuration>
                     <systemPropertyVariables>
-                        <env>${env}</env>
+                        <env>${environment}</env>
                     </systemPropertyVariables>
                     <suiteXmlFiles>
                         <suiteXmlFile>${xmlFile}.xml</suiteXmlFile>

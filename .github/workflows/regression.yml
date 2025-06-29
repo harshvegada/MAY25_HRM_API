@@ -42,7 +42,7 @@ jobs:
         run: |
           echo "Running the following test cases:"
           echo "${{ github.event.inputs.test_cases }}"
-          mvn clean test -DxmlFile=${{ github.event.inputs.xmlFiles }} -Denv=${{ github.event.inputs.environment }}
+          mvn clean test -DxmlFile=${{ github.event.inputs.xmlFiles }} -Denvironment=${{ github.event.inputs.environment }}
 
       - name: Checkout GitHub Pages branch
         uses: actions/checkout@v4
