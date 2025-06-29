@@ -1,0 +1,2 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","1813","createVendor","Surefire suite","Sun Jun 29 04:18:32 GMT 2025","passed","Sun Jun 29 04:18:34 GMT 2025","testScript.VendorTestCases","Surefire test","testScript.VendorTestCases","createVendor"
