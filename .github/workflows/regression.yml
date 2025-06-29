@@ -71,5 +71,5 @@ jobs:
           subject: Test Email
           content_type: text/html
           body: |
-            <p>The Allure report for the latest run in <strong>${{ github.repository }}</strong> is available at:</p>
-            <p><a href="https://harshvegada.github.io/MAY25_HRM_API/${{ github.run_number }}">View Report</a></p>
+            The Allure report for the latest run in ${{ github.repository }} is available at:
+            https://harshvegada.github.io/MAY25_HRM_API/${{ github.run_number }}
