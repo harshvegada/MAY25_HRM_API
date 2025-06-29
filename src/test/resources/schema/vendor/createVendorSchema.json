@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "vendorCode": {
+          "type": "string"
+        },
+        "vendorName": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "isDeleted": {
+          "type": "string"
+        },
+        "contactNo": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "website": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "vendorCode",
+        "vendorName",
+        "address",
+        "isDeleted",
+        "contactNo",
+        "email",
+        "website",
+        "created_at",
+        "updated_at"
+      ]
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "lastVendorId": {
+          "type": "number"
+        },
+        "permissions": {
+          "type": "object",
+          "properties": {
+            "delete": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "delete"
+          ]
+        }
+      },
+      "required": [
+        "lastVendorId",
+        "permissions"
+      ]
+    }
+  },
+  "required": [
+    "data",
+    "meta"
+  ]
+}

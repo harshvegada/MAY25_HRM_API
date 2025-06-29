@@ -18,6 +18,10 @@ public class GenerateData {
         return faker.name().firstName();
     }
 
+    public static String getWebSite() {
+        return "https://" + faker.company().url();
+    }
+
     public static String getLastName() {
         return faker.name().lastName();
     }
@@ -48,19 +52,31 @@ public class GenerateData {
         return faker.lorem().fixedString(50);
     }
 
-    public static String getUserName(){
+    public static String getUserName() {
         return faker.name().username();
     }
 
-    public static String getPassword(){
+    public static String getCompanyName() {
+        return faker.company().name();
+    }
+
+    public static String getAddress() {
+        return faker.address().fullAddress();
+    }
+
+    public static String getPassword() {
         return faker.crypto().sha1();
     }
 
-    public static String getProgrammingLanguageName(){
+    public static String getPhoneNumber() {
+        return "8905741289";
+    }
+
+    public static String getProgrammingLanguageName() {
         return faker.programmingLanguage().name();
     }
 
-    public static String getSomeDescription(){
+    public static String getSomeDescription() {
         return faker.lorem().sentence();
     }
 }
