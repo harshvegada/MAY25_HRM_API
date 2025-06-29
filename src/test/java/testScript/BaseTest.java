@@ -1,5 +1,6 @@
 package testScript;
 
+import base.ApplicationConfig;
 import constants.FileConstants;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -15,9 +16,8 @@ public class BaseTest {
     @BeforeMethod
     public void setup() {
         TokenService service = new TokenService();
-        service.getAccessTokenFor(propertyUtils.getValue("userName"), propertyUtils.getValue("password"));
+        service.getAccessTokenFor(propertyUtils.getValue(ApplicationConfig.getEnvironment() + ".userName"), propertyUtils.getValue(ApplicationConfig.getEnvironment() + ".password"));
     }
-
 
     @AfterMethod
     public void tearDown(ITestResult iTestResult) {

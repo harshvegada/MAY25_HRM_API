@@ -6,6 +6,13 @@ on:
       test_cases:
         description: 'Test cases to run (e.g., LoginTests#testLogin+testLogout,SignupTests#testSignup)'
         required: true
+      environment:
+        type: choice
+        description: 'Chose the environment to run your suite or test cases'
+        options:
+          - 'qa'
+          - 'stage'
+        default: 'qa'
 
 jobs:
   build:
@@ -30,7 +37,7 @@ jobs:
         run: |
           echo "Running the following test cases:"
           echo "${{ github.event.inputs.test_cases }}"
-          mvn -Dtest="${{ github.event.inputs.test_cases }}" test
+          mvn -Dtest="${{ github.event.inputs.test_cases }}" test -Denv=${{ github.event.inputs.environment }}
 
       - name: Checkout GitHub Pages branch
         uses: actions/checkout@v4

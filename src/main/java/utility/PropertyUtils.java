@@ -26,8 +26,17 @@ public class PropertyUtils {
     }
 
 
-    public static void getValue(String filePath, String key) {
-
+    public static String getValue(String filePath, String key) {
+        Properties properties = new Properties();
+        File file = new File(filePath);
+        FileInputStream inputStream = null;
+        try {
+            inputStream = new FileInputStream(file);
+            properties.load(inputStream);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return properties.getProperty(key);
     }
 
 

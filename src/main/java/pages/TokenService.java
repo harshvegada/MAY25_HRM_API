@@ -15,7 +15,7 @@ import static io.restassured.RestAssured.given;
 
 public class TokenService extends APIControlActions {
 
-    private String csrfToken;
+    private ThreadLocal<String> csrfTokenThreadLocal = new ThreadLocal<>();
 
     private void login() {
 
@@ -28,17 +28,17 @@ public class TokenService extends APIControlActions {
                 .then()
                 .extract().response();
         Assert.assertEquals(response.statusCode(), 200);
-        cookies = response.cookies();
+        cookiesThreadLocal.set(response.cookies());
 
         //Option 1 : Jsoup
         Document document = Jsoup.parse(response.asString());
         //Option 1.a : If we have ID
-        csrfToken = document.getElementById("login__csrf_token").attr("value");
+        csrfTokenThreadLocal.set(document.getElementById("login__csrf_token").attr("value"));
     }
 
     private void validateCredential(String userName, String password) {
         Map<String, String> formData = new HashMap<>();
-        formData.put("login[_csrf_token]", csrfToken);
+        formData.put("login[_csrf_token]", csrfTokenThreadLocal.get());
         formData.put("hdnUserTimeZoneOffset", "5.5");
         formData.put("txtUsername", userName);
         formData.put("txtPassword", password);
@@ -48,14 +48,14 @@ public class TokenService extends APIControlActions {
                 .filter(new AllureRestAssured())
                 .contentType(ContentType.URLENC)
                 .formParams(formData)
-                .cookies(cookies)
+                .cookies(cookiesThreadLocal.get())
                 .when()
                 .post("/auth/validateCredentials")
                 .then()
                 .extract().response();
 
         Assert.assertEquals(response.statusCode(), 200);
-        cookies = response.cookies();
+        cookiesThreadLocal.set(response.cookies());
     }
 
     private void getAccessToken() {
@@ -63,15 +63,15 @@ public class TokenService extends APIControlActions {
                 .filter(new AllureRestAssured())
                 .accept(ContentType.JSON)
                 .baseUri(BASE_URI)
-                .cookies(cookies) //Validate Response Cookies
+                .cookies(cookiesThreadLocal.get()) //Validate Response Cookies
                 .when()
                 .get("/core/getLoggedInAccountToken")
                 .then()
                 .extract().response();
         Assert.assertEquals(response.statusCode(), 200);
 
-        bearerToken = response.jsonPath().getString("token.access_token");
-        Assert.assertNotNull(bearerToken,"Bearer Token is Null");
+        bearerTokenThreadLocal.set(response.jsonPath().getString("token.access_token"));
+        Assert.assertNotNull(bearerTokenThreadLocal.get(),"Bearer Token is Null");
 //        setToken(bearerToken);
     }
 
