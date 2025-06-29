@@ -1,0 +1,200 @@
+<div>POST to https://virtus2027-trials7161.orangehrmlive.com/api/wizard</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+[
+    {
+        &quot;endpoint&quot;: &quot;employees&quot;,
+        &quot;method&quot;: &quot;POST&quot;,
+        &quot;data&quot;: {
+            &quot;firstName&quot;: &quot;Charlie&quot;,
+            &quot;middleName&quot;: &quot;Felix&quot;,
+            &quot;lastName&quot;: &quot;Roberts&quot;,
+            &quot;chkLogin&quot;: true,
+            &quot;locationId&quot;: &quot;1&quot;,
+            &quot;joinedDate&quot;: &quot;2026-06-28&quot;,
+            &quot;autoGenerateEmployeeId&quot;: true,
+            &quot;initiatePreboarding&quot;: false,
+            &quot;userName&quot;: &quot;willy.yundt&quot;,
+            &quot;userPassword&quot;: &quot;Voluptatem illum quia eos ipsa cumque facere.Nihil&quot;,
+            &quot;rePassword&quot;: &quot;Voluptatem illum quia eos ipsa cumque facere.Nihil&quot;,
+            &quot;status&quot;: &quot;Enabled&quot;,
+            &quot;essRoleId&quot;: &quot;2&quot;,
+            &quot;supervisorRoleId&quot;: &quot;3&quot;,
+            &quot;adminRoleId&quot;: &quot;1&quot;,
+            &quot;employeeId&quot;: null
+        },
+        &quot;params&quot;: {
+            
+        }
+    },
+    {
+        &quot;endpoint&quot;: &quot;employees/&lt;EMPNUMBER&gt;&quot;,
+        &quot;method&quot;: &quot;PATCH&quot;,
+        &quot;data&quot;: {
+            &quot;firstName&quot;: &quot;Charlie&quot;,
+            &quot;middleName&quot;: &quot;Felix&quot;,
+            &quot;lastName&quot;: &quot;Roberts&quot;,
+            &quot;nation_code&quot;: &quot;82&quot;,
+            &quot;emp_marital_status&quot;: null,
+            &quot;emp_gender&quot;: null,
+            &quot;emp_birthday&quot;: null,
+            &quot;emp_dri_lice_exp_date&quot;: null
+        },
+        &quot;params&quot;: {
+            
+        }
+    },
+    {
+        &quot;endpoint&quot;: &quot;employees/&lt;EMPNUMBER&gt;/job&quot;,
+        &quot;method&quot;: &quot;PATCH&quot;,
+        &quot;data&quot;: {
+            &quot;joined_date&quot;: &quot;2026-06-28&quot;,
+            &quot;job_title_id&quot;: &quot;12&quot;,
+            &quot;employment_status_id&quot;: &quot;3&quot;,
+            &quot;job_category_id&quot;: &quot;&quot;,
+            &quot;subunit_id&quot;: &quot;&quot;,
+            &quot;location_id&quot;: &quot;1&quot;,
+            &quot;work_schedule_id&quot;: &quot;2&quot;,
+            &quot;has_contract_details&quot;: &quot;1&quot;,
+            &quot;comment&quot;: &quot;&quot;,
+            &quot;effective_date&quot;: &quot;2026-06-28&quot;,
+            &quot;event_id&quot;: &quot;1&quot;,
+            &quot;probation_end_date&quot;: null,
+            &quot;date_of_permanency&quot;: null,
+            &quot;cost_centre_id&quot;: null,
+            &quot;contract_start_date&quot;: null,
+            &quot;contract_end_date&quot;: null
+        },
+        &quot;params&quot;: {
+            
+        }
+    },
+    {
+        &quot;endpoint&quot;: &quot;employeeOnboarding/&lt;EMPNUMBER&gt;/create&quot;,
+        &quot;method&quot;: &quot;POST&quot;,
+        &quot;data&quot;: {
+            &quot;data&quot;: {
+                &quot;eventTemplate&quot;: &quot;2&quot;,
+                &quot;dueDate&quot;: &quot;2026-06-28&quot;,
+                &quot;owners&quot;: [
+                    &quot;29&quot;,
+                    &quot;38&quot;
+                ]
+            }
+        },
+        &quot;params&quot;: {
+            
+        }
+    }
+]    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Authorization: Bearer bf9e74b1eb6e0e1aa58fafe11578d51d6d386e26</div>
+            <div>Accept: application/json, application/javascript, text/javascript, text/json</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+    <h4>Cookies</h4>
+    <div>
+            <div>orangehrmSecurityAuthentication_LoginLocationTracker: 21232f297a57a5a743894a0e4a801fc3</div>
+            <div>guest: deleted</div>
+            <div>orangehrm: 4tno8tbpurppp66a71envnkjbj8v9afk5m9uirp9kt4pq1a6kh9hts78ploc9hacvfvdem79n2293ruc9t19u1fvtj55k903fkrufsh8e1h98g5rr0rva7qmq6q4960u</div>
+            <div>Loggedin: True</div>
+            <div>navigation_log_latest_url: %2Fauth%2Flogin</div>
+    </div>
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X POST &#39;https://virtus2027-trials7161.orangehrmlive.com/api/wizard&#39; -H &#39;Authorization: Bearer bf9e74b1eb6e0e1aa58fafe11578d51d6d386e26&#39; -H &#39;Accept: application/json, application/javascript, text/javascript, text/json&#39; -H &#39;Content-Type: application/json&#39; -b &#39;orangehrmSecurityAuthentication_LoginLocationTracker=21232f297a57a5a743894a0e4a801fc3&#39; -b &#39;guest=deleted&#39; -b &#39;orangehrm=4tno8tbpurppp66a71envnkjbj8v9afk5m9uirp9kt4pq1a6kh9hts78ploc9hacvfvdem79n2293ruc9t19u1fvtj55k903fkrufsh8e1h98g5rr0rva7qmq6q4960u&#39; -b &#39;Loggedin=True&#39; -b &#39;navigation_log_latest_url=%2Fauth%2Flogin&#39; -d &#39;[
+    {
+        &quot;endpoint&quot;: &quot;employees&quot;,
+        &quot;method&quot;: &quot;POST&quot;,
+        &quot;data&quot;: {
+            &quot;firstName&quot;: &quot;Charlie&quot;,
+            &quot;middleName&quot;: &quot;Felix&quot;,
+            &quot;lastName&quot;: &quot;Roberts&quot;,
+            &quot;chkLogin&quot;: true,
+            &quot;locationId&quot;: &quot;1&quot;,
+            &quot;joinedDate&quot;: &quot;2026-06-28&quot;,
+            &quot;autoGenerateEmployeeId&quot;: true,
+            &quot;initiatePreboarding&quot;: false,
+            &quot;userName&quot;: &quot;willy.yundt&quot;,
+            &quot;userPassword&quot;: &quot;Voluptatem illum quia eos ipsa cumque facere.Nihil&quot;,
+            &quot;rePassword&quot;: &quot;Voluptatem illum quia eos ipsa cumque facere.Nihil&quot;,
+            &quot;status&quot;: &quot;Enabled&quot;,
+            &quot;essRoleId&quot;: &quot;2&quot;,
+            &quot;supervisorRoleId&quot;: &quot;3&quot;,
+            &quot;adminRoleId&quot;: &quot;1&quot;,
+            &quot;employeeId&quot;: null
+        },
+        &quot;params&quot;: {
+            
+        }
+    },
+    {
+        &quot;endpoint&quot;: &quot;employees/&lt;EMPNUMBER&gt;&quot;,
+        &quot;method&quot;: &quot;PATCH&quot;,
+        &quot;data&quot;: {
+            &quot;firstName&quot;: &quot;Charlie&quot;,
+            &quot;middleName&quot;: &quot;Felix&quot;,
+            &quot;lastName&quot;: &quot;Roberts&quot;,
+            &quot;nation_code&quot;: &quot;82&quot;,
+            &quot;emp_marital_status&quot;: null,
+            &quot;emp_gender&quot;: null,
+            &quot;emp_birthday&quot;: null,
+            &quot;emp_dri_lice_exp_date&quot;: null
+        },
+        &quot;params&quot;: {
+            
+        }
+    },
+    {
+        &quot;endpoint&quot;: &quot;employees/&lt;EMPNUMBER&gt;/job&quot;,
+        &quot;method&quot;: &quot;PATCH&quot;,
+        &quot;data&quot;: {
+            &quot;joined_date&quot;: &quot;2026-06-28&quot;,
+            &quot;job_title_id&quot;: &quot;12&quot;,
+            &quot;employment_status_id&quot;: &quot;3&quot;,
+            &quot;job_category_id&quot;: &quot;&quot;,
+            &quot;subunit_id&quot;: &quot;&quot;,
+            &quot;location_id&quot;: &quot;1&quot;,
+            &quot;work_schedule_id&quot;: &quot;2&quot;,
+            &quot;has_contract_details&quot;: &quot;1&quot;,
+            &quot;comment&quot;: &quot;&quot;,
+            &quot;effective_date&quot;: &quot;2026-06-28&quot;,
+            &quot;event_id&quot;: &quot;1&quot;,
+            &quot;probation_end_date&quot;: null,
+            &quot;date_of_permanency&quot;: null,
+            &quot;cost_centre_id&quot;: null,
+            &quot;contract_start_date&quot;: null,
+            &quot;contract_end_date&quot;: null
+        },
+        &quot;params&quot;: {
+            
+        }
+    },
+    {
+        &quot;endpoint&quot;: &quot;employeeOnboarding/&lt;EMPNUMBER&gt;/create&quot;,
+        &quot;method&quot;: &quot;POST&quot;,
+        &quot;data&quot;: {
+            &quot;data&quot;: {
+                &quot;eventTemplate&quot;: &quot;2&quot;,
+                &quot;dueDate&quot;: &quot;2026-06-28&quot;,
+                &quot;owners&quot;: [
+                    &quot;29&quot;,
+                    &quot;38&quot;
+                ]
+            }
+        },
+        &quot;params&quot;: {
+            
+        }
+    }
+]&#39;
+    </div>
+
