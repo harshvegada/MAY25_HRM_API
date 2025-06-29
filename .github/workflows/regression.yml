@@ -37,7 +37,6 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-
       - name: Run selected test cases
         continue-on-error: true
         run: |
@@ -81,8 +80,13 @@ jobs:
           to-email: harshvegada1997@gmail.com,write2technocredits@gmail.com
           username: harshhpatel07@gmail.com
           password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: Test Email
-          content_type: text/html
+          subject: Automation Test Execution for ${{ github.repository }}
           body: |
+            Hi everyone,
+            Please find  the latest execution of automation from below link:
+            
             The Allure report for the latest run in ${{ github.repository }} is available at:
             https://harshvegada.github.io/MAY25_HRM_API/${{ github.run_number }}
+            
+            Thanks & Regards
+            TechnoCredits
